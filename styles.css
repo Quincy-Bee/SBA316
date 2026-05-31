@@ -1,12 +1,13 @@
 h1 {
-    color: blue;
+    color: black;
     width: 100%;
     text-align: center;
+    font-family: Helvetica;
 }
 
 p {
     width: 100%;
-    color: red;
+    color: black;
     font-family: helvetica;
     text-align: center;
 }
@@ -40,14 +41,32 @@ p {
 /* team cards */
 .pokemon-card {
     border: 1px solid #ccc;
+    color: black;
     padding: 10px;
     margin: 10px;
     display: inline-block;
     text-align: center;
-    background: white;
+    background: rgb(195, 191, 225);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* allows wrapping when more images are added */
+    gap: 15px;
+    padding: 20px;
+    
 }
 
 /* favorite */
 .favorite {
     background: gold;
+}
+
+#pokemonForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* allows wrapping when more images are added */
+    gap: 15px;
+    padding: 20px;
+
 }

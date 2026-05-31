@@ -59,7 +59,7 @@ function createPokemonCard(name) {
 
     if (container.children.length >= MAX_TEAM_SIZE) {
         message.textContent = "Team is full! Max 4 Pokémon allowed.";
-        return false; // ❌ failed
+        return false; 
     }
 
     const card = document.createElement("div");
