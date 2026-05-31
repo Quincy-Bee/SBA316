@@ -1,5 +1,3 @@
-console.log("JS loaded");
-
 // DOM elements
 const form = document.getElementById("pokemonForm");
 const input = document.getElementById("pokemonInput");
@@ -7,40 +5,41 @@ const container = document.getElementById("pokeContainer");
 const message = document.getElementById("message");
 const options = document.querySelectorAll(".pokemon-option");
 
+// TEAM LIMIT
+const MAX_TEAM_SIZE = 4;
 
-// Build allowed Pokémon list from your images (IMPORTANT)
+// Build allowed Pokémon list from images
 const allowedPokemon = Array.from(options).map(option => option.dataset.name);
 
-
 // -----------------------------
-// FORM SUBMIT (typed input)
+// FORM SUBMIT
 // -----------------------------
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const name = input.value.trim();
 
-    // HTML + JS validation
     if (name === "") {
         message.textContent = "Please enter a Pokémon name";
         return;
     }
 
-    // must match image options
-    if (!allowedPokemon.includes(capitalize(name))) {
+    const formattedName = capitalize(name);
+
+    if (!allowedPokemon.includes(formattedName)) {
         message.textContent = "Invalid Pokémon. Choose from the images above.";
         return;
     }
 
-    createPokemonCard(capitalize(name));
+    createPokemonCard(formattedName);
 
     input.value = "";
-    message.textContent = `${capitalize(name)} added to team!`;
+    message.textContent = `${formattedName} added to team!`;
 });
 
 
 // -----------------------------
-// IMAGE CLICK (preferred method)
+// IMAGE CLICK
 // -----------------------------
 options.forEach(option => {
     option.addEventListener("click", function () {
@@ -58,6 +57,12 @@ options.forEach(option => {
 // -----------------------------
 function createPokemonCard(name) {
 
+    // LIMIT CHECK
+    if (container.children.length >= MAX_TEAM_SIZE) {
+        message.textContent = "Team is full! Max 4 Pokémon allowed.";
+        return;
+    }
+
     const card = document.createElement("div");
     card.classList.add("pokemon-card");
 
@@ -69,22 +74,14 @@ function createPokemonCard(name) {
 
     container.appendChild(card);
 
-
-    // -------------------------
     // FAVORITE TOGGLE
-    // -------------------------
     const favBtn = card.querySelector(".favorite-btn");
-
     favBtn.addEventListener("click", function () {
         card.classList.toggle("favorite");
     });
 
-
-    // -------------------------
-    // REMOVE CARD
-    // -------------------------
+    // REMOVE CARD (IMPORTANT FIX)
     const removeBtn = card.querySelector(".remove-btn");
-
     removeBtn.addEventListener("click", function () {
         card.remove();
         message.textContent = `${name} removed from team!`;
@@ -93,7 +90,7 @@ function createPokemonCard(name) {
 
 
 // -----------------------------
-// HELPER FUNCTION (format input)
+// HELPER FUNCTION
 // -----------------------------
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
