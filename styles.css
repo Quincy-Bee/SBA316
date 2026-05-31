@@ -1,0 +1,21 @@
+h1 {
+    color: blue;
+    width: 100%;
+    text-align: center;
+}
+
+p {
+    width: 100%;
+    color: red;
+    font-family: helvetica;
+    text-align: center;
+}
+
+#mainImage {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    object-fit: cover;
+    text-align: center;
+    
+}
