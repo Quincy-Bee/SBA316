@@ -57,10 +57,9 @@ options.forEach(option => {
 // -----------------------------
 function createPokemonCard(name) {
 
-    // LIMIT CHECK
     if (container.children.length >= MAX_TEAM_SIZE) {
         message.textContent = "Team is full! Max 4 Pokémon allowed.";
-        return;
+        return false; // ❌ failed
     }
 
     const card = document.createElement("div");
@@ -74,18 +73,18 @@ function createPokemonCard(name) {
 
     container.appendChild(card);
 
-    // FAVORITE TOGGLE
     const favBtn = card.querySelector(".favorite-btn");
     favBtn.addEventListener("click", function () {
         card.classList.toggle("favorite");
     });
 
-    // REMOVE CARD (IMPORTANT FIX)
     const removeBtn = card.querySelector(".remove-btn");
     removeBtn.addEventListener("click", function () {
         card.remove();
         message.textContent = `${name} removed from team!`;
     });
+
+    return true;
 }
 
 
