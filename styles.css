@@ -11,17 +11,43 @@ p {
     text-align: center;
 }
 
-.parent-container {
+
+#mainImage {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 10vh;
-    width: 100%;
+    flex-wrap: wrap; /* allows wrapping when more images are added */
+    gap: 15px;
+    padding: 20px;
 }
 
-.mainImage {
-    padding: 10px;
-    width: 100px;
-    border-radius: 50%;
 
+.pokemon-option {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%; /* makes them circular again */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.pokemon-option:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
+
+/* team cards */
+.pokemon-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+    background: white;
+}
+
+/* favorite */
+.favorite {
+    background: gold;
 }
