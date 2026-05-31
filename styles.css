@@ -11,11 +11,17 @@ p {
     text-align: center;
 }
 
-#mainImage {
-    width: 600px;
-    height: 600px;
+.parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    width: 100%;
+}
+
+.mainImage {
+    padding: 10px;
+    width: 100px;
     border-radius: 50%;
-    object-fit: cover;
-    text-align: center;
-    
+
 }
